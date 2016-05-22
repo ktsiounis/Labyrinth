@@ -1,0 +1,57 @@
+// example: class Cell, array of cells, stack
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+class Cell {
+
+  public:
+    int i,j; char c; 
+    Cell() {i=0;j=0;c=' ';};     
+    Cell (int x, int y, char a) {i=x;j=y;c=a;};
+    void seti (int x) {i=x;};
+    int geti () {return i;};
+    void setj (int y) {j=y;};
+    int getj () {return j;}; 
+    void setc (char a) {c=a;};
+    char getc () {return c;};    
+};
+
+int main () {
+  stack <Cell> s;  //s is a stack of cells 
+  int n=2,k=2;
+  Cell w[n][k];   //w is a 2d array of cells  
+  char c;
+  Cell cell0;  
+  Cell cell1(3,4,'*');
+  Cell cell2(5,6,'.');
+  cout << "cell0: " << cell0.geti()<< cell0.getj()<< cell0.getc() << endl;  
+  cout << "cell1: " << cell1.geti()<< cell1.getj()<< cell1.getc() << endl;
+  cout << "cell2: " << cell2.geti()<< cell2.getj()<< cell2.getc() << endl;
+  cell0.c='&';
+  cell1.c='%'; 
+  cell2.c='@';
+  cout << "cell0: " << cell0.i<< cell0.j<< cell0.c << endl;  
+  cout << "cell1: " << cell1.i<< cell1.j<< cell1.c << endl;
+  cout << "cell2: " << cell2.i<< cell2.j<< cell2.c << endl;
+    
+  for (int i=0; i<n; i++)
+     for (int j=0; j<k; j++)
+        {cin>>c;
+         w[i][j].i=i;w[i][j].j=j;w[i][j].c=c;
+        cout << "w["<<i<<"]["<<j<<"]: "<<w[i][j].i<<w[i][j].j<<w[i][j].c<<endl;}
+  
+    for (int i=0; i<n; i++)
+     for (int j=0; j<k; j++)
+        {s.push(w[i][j]);}
+  
+    Cell cell;
+    while (!s.empty())
+      {cell=s.top(); s.pop();
+       cout<<"("<<cell.i<<" "<<cell.j<<" "<<cell.c<<")"<<endl;
+       }    
+    
+  system("PAUSE");
+  return 0;
+}

@@ -1,0 +1,38 @@
+//read from file, write to file 
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main(void)
+{ char c;
+  int n,k;
+
+  // ifstream 
+  ifstream myinfile;               
+  myinfile.open ("maze0.txt");   //anoigoume arxeio eisodou 
+  // ofstream 
+  ofstream myoutfile;               
+  myoutfile.open ("maze0out.txt");  //anoigoume arxeio eksodou    
+  // eisodos eksodos
+  myinfile>>n>>k; // diabazoume diastaseis
+  myoutfile<<n<<" "<<k;
+  myinfile.get(c); //gia telos grammhs
+  myoutfile<<endl;
+  for (int i=0; i<n; i++)  //diabazoume laviryntho
+   {for (int j=0; j<k; j++)
+        {myinfile.get(c); myoutfile<<c;}; // epomenos xarakthras
+    myinfile.get(c); //gia telos grammhs
+    myoutfile<<endl; 
+   }
+
+
+  myinfile.close();  //kleisimo arxeiwn
+  myoutfile.close();
+
+system("PAUSE");
+return 0;
+}
+
+
+
